@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ParksLookup.Models;
 
 namespace ParksLookup.Migrations
 {
     [DbContext(typeof(ParksLookupContext))]
-    partial class ParksLookupContextModelSnapshot : ModelSnapshot
+    [Migration("20220821225921_Add_State_SeedData")]
+    partial class Add_State_SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

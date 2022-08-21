@@ -13,12 +13,12 @@ namespace ParksLookup.Controllers
   [Route("[controller]")]
   public class ParksController : ControllerBase
   {
-    private readonly ILogger<ParksController> _logger;
+    // private readonly ILogger<ParksController> _logger;
     private readonly ParksLookupContext _db;
 
-    public ParksController(ILogger<ParksController> logger, ParksLookupContext db)
+    public ParksController(ParksLookupContext db)
     {
-      _logger = logger;
+      // _logger = logger;
       _db = db;
     }
 
@@ -48,7 +48,7 @@ namespace ParksLookup.Controllers
       return park;
     }
 
-    [HttpPut("{id")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Park park)
     {
       if (id != park.ParkId)

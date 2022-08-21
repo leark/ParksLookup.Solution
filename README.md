@@ -95,6 +95,45 @@ Then run the following command in the console
 
 This program was built using _`Microsoft .NET SDK 5.0.401`_, and may not be compatible with other versions. Your milage may vary.
 
+## API Documentation
+
+### Animals
+Access information on animals currently in the shelter.
+
+#### HTTP Request Structure
+```
+GET /Parks
+POST /Parks
+GET /Parks/{id}
+PUT /Parks/{id}
+DELETE /Parks/{id}
+```
+* To utilize the POST request and create a new instance of an animal, the following information is required.
+```
+{
+    "Name": "Yellowstone",
+    "Website": "https://www.nps.gov/yell/index.htm",
+    "StatePark": false,
+    "StateId": 56,
+    "Description": "The world's first national park that spans three states: Idaho, Montana, and Wyoming"
+}
+```
+*StateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
+
+#### Example Query
+```
+https://localhost:5000/Parks/1
+```
+#### Sample JSON Response
+```
+{
+    "animalId": 1,
+    "name": "Scooter",
+    "species": "Dog"
+}
+```
+
+
 ## Known Bugs
 
 * _No known issues_
