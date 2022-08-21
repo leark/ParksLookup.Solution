@@ -8,12 +8,12 @@ namespace ParksLookup.Models
     [Required]
     public string Name { get; set; }
     [Required]
-    public string State { get; set; }
-    [Required]
-    [StringLength(2)]
-    public string StateAbbreviation { get; set; }
-    [Required]
     public string Website { get; set; }
+    [Required]
+    public bool StatePark { get; set; }
+    [Required]
+    public int StateId { get; set; }
     public string Description { get; set; }
+    public virtual State State { get; set; }
   }
 }

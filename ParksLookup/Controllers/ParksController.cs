@@ -24,7 +24,8 @@ namespace ParksLookup.Controllers
     [HttpGet]
     public IEnumerable<Park> Get()
     {
-      return new List<Park>();
+      return _db.Parks.ToList();
     }
+
   }
 }
