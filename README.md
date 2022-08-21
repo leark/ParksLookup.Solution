@@ -96,9 +96,8 @@ Then run the following command in the console
 This program was built using _`Microsoft .NET SDK 5.0.401`_, and may not be compatible with other versions. Your milage may vary.
 
 ## API Documentation
-
-### Animals
-Access information on animals currently in the shelter.
+### Parks
+Access information on parks currently in the database.
 
 #### HTTP Request Structure
 ```
@@ -126,13 +125,28 @@ https://localhost:5000/Parks/1
 ```
 #### Sample JSON Response
 ```
-{
-    "animalId": 1,
-    "name": "Scooter",
-    "species": "Dog"
-}
+[
+  {
+    "parkId": 1,
+    "name": "Mount Rainier",
+    "website": "https://www.nps.gov/mora/index.htm",
+    "statePark": false,
+    "stateId": 53,
+    "description": "An active volcano in Washington State."
+  }
+]
 ```
-
+#### Swagger Instructions
+This API uses [Swagger](https://swagger.io/tools/swagger-ui/) REST API Documentation
+- Navigate to the following url to access Swagger:
+```
+https://localhost:5001/swagger/index.html
+```
+  - NOTE: the program must be running to access Swagger
+- To Test a query, find the tab for the query type and click the "Try It Out" button located in the top right corner of the card
+  - This will allow inputs in the tab's form fields
+  - Enter your query in the form field(s) and click the "Execute" button to view the server responses
+***
 
 ## Known Bugs
 

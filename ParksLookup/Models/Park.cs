@@ -14,6 +14,5 @@ namespace ParksLookup.Models
     [Required]
     public int StateId { get; set; }
     public string Description { get; set; }
-    public virtual State State { get; set; }
   }
 }
