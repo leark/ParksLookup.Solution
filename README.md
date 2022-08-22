@@ -54,21 +54,21 @@ _Requires console application such as Git Bash, Terminal, or PowerShell_
       
 5. Copy and paste below JSON text in appsettings.json.
 
-```json
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning",
-      "System": "Information",
-      "Microsoft": "Information"
+    ```json
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Warning",
+          "System": "Information",
+          "Microsoft": "Information"
+        }
+      },
+      "AllowedHosts": "*",
+      "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Port=3306;database=naparks;uid=root;pwd=[YOUR-PASSWORD-HERE];"
+      }
     }
-  },
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=naparks;uid=root;pwd=[YOUR-PASSWORD-HERE];"
-  }
-}
-```
+    ```
 
 7. Replace [YOUR-PASSWORD-HERE] with your MySQL password.
 
@@ -96,19 +96,24 @@ Then run the following command in the console
 This program was built using _`Microsoft .NET SDK 5.0.401`_, and may not be compatible with other versions. Your milage may vary.
 
 ## API Documentation
-### Parks
-#### HTTP Request Structure
-```
-GET /Parks
-POST /Parks
-GET /Parks/{id}
-PUT /Parks/{id}
-DELETE /Parks/{id}
-```
+#### Available Requests
+
+| EndPoints            | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| GET /Parks           | Gets all parks in the database.                  |
+| POST /Parks          | Adds a park to the database                      |
+| GET /Parks/{id}      | Gets a park with parkId = {id}                   |
+| PUT /Parks/{id}      | Updates a park with parkId = {id}                |
+| DELETE /Parks/{id}   | Deletes a park with parkId = {id}                |
+| GET /State/{id}      | Gets all parks in the state with stateId = {id}* |
+
+*stateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
+  
 #### Example Query
 ```
 https://localhost:5000/Parks/1
 ```
+
 #### Sample JSON Response
 ```
 [
@@ -122,7 +127,6 @@ https://localhost:5000/Parks/1
   }
 ]
 ```
-*stateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
 
 #### Example POST request to http://localhost:5000/parks
 ```
@@ -134,7 +138,6 @@ https://localhost:5000/Parks/1
     "Description": "The world's first national park that spans three states: Idaho, Montana, and Wyoming"
 }
 ```
-*stateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
 
 ### Swagger Instructions
 This API uses [Swagger](https://swagger.io/tools/swagger-ui/) to easily test the endpoints.

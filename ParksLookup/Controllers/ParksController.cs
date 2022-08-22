@@ -45,13 +45,17 @@ namespace ParksLookup.Controllers
       return park;
     }
 
-    [HttpGet("/state/{id}")]
+    [HttpGet("/State/{id}")]
     public async Task<ActionResult<IEnumerable<Park>>> GetParksByState(int id)
     {
       var park = _db.Parks.AsQueryable();
       if (park != null)
       {
         park = park.Where(p => p.StateId == id);
+      }
+      if (park.Count<Park>() == 0)
+      {
+        return NotFound();
       }
       return await park.ToListAsync();
     }
