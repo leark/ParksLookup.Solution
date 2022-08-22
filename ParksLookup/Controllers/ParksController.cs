@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using ParksLookup.Models;
 
@@ -13,12 +12,10 @@ namespace ParksLookup.Controllers
   [Route("[controller]")]
   public class ParksController : ControllerBase
   {
-    // private readonly ILogger<ParksController> _logger;
     private readonly ParksLookupContext _db;
 
     public ParksController(ParksLookupContext db)
     {
-      // _logger = logger;
       _db = db;
     }
 
@@ -46,6 +43,17 @@ namespace ParksLookup.Controllers
         return NotFound();
       }
       return park;
+    }
+
+    [HttpGet("/state/{id}")]
+    public async Task<ActionResult<IEnumerable<Park>>> GetParksByState(int id)
+    {
+      var park = _db.Parks.AsQueryable();
+      if (park != null)
+      {
+        park = park.Where(p => p.StateId == id);
+      }
+      return await park.ToListAsync();
     }
 
     [HttpPut("{id}")]

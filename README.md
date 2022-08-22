@@ -2,17 +2,20 @@
 
 #### By _Seung Lee_
 
-#### _A simple API._
+#### _A simple API that shows information about national and state parks in the United States._
 
 ## Technologies Used
 
 * _C#/.NET_
+* _MySQL_
 * _Entity Framework_
+* _Swagger_
+* _Microsoft OpenAPI_
 
 
 ## Description
 
-A simple API.
+A simple API that allows viewing, adding, updating, and deleting of parks. It uses HTTP protocols GET, POST, PUT, and DELETE. 
 
 ## Setup/Installation Requirements
 _Requires console application such as Git Bash, Terminal, or PowerShell_
@@ -63,9 +66,6 @@ _Requires console application such as Git Bash, Terminal, or PowerShell_
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Port=3306;database=naparks;uid=root;pwd=[YOUR-PASSWORD-HERE];"
-  },
-  "JwtConfig": {
-    "Secret" : "[YOUR-SECRET-HERE]"
   }
 }
 ```
@@ -97,8 +97,6 @@ This program was built using _`Microsoft .NET SDK 5.0.401`_, and may not be comp
 
 ## API Documentation
 ### Parks
-Access information on parks currently in the database.
-
 #### HTTP Request Structure
 ```
 GET /Parks
@@ -107,18 +105,6 @@ GET /Parks/{id}
 PUT /Parks/{id}
 DELETE /Parks/{id}
 ```
-* To utilize the POST request and create a new instance of an animal, the following information is required.
-```
-{
-    "Name": "Yellowstone",
-    "Website": "https://www.nps.gov/yell/index.htm",
-    "StatePark": false,
-    "StateId": 56,
-    "Description": "The world's first national park that spans three states: Idaho, Montana, and Wyoming"
-}
-```
-*StateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
-
 #### Example Query
 ```
 https://localhost:5000/Parks/1
@@ -136,8 +122,22 @@ https://localhost:5000/Parks/1
   }
 ]
 ```
-#### Swagger Instructions
-This API uses [Swagger](https://swagger.io/tools/swagger-ui/) REST API Documentation
+*stateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
+
+#### Example POST request to http://localhost:5000/parks
+```
+{
+    "Name": "Yellowstone",
+    "Website": "https://www.nps.gov/yell/index.htm",
+    "StatePark": false,
+    "StateId": 56,
+    "Description": "The world's first national park that spans three states: Idaho, Montana, and Wyoming"
+}
+```
+*stateId follows [FIPS Code](https://www.bls.gov/respondents/mwr/electronic-data-interchange/appendix-d-usps-state-abbreviations-and-fips-codes.htm)
+
+### Swagger Instructions
+This API uses [Swagger](https://swagger.io/tools/swagger-ui/) to easily test the endpoints.
 - Navigate to the following url to access Swagger:
 ```
 https://localhost:5001/swagger/index.html
